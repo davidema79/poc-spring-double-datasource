@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: createFK_contributor_component
+      author: Davide Martorana
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames:  component_id
+            baseTableName:  contributors
+            baseTableSchemaName:  public
+            constraintName:  fk_contributor_component
+            deferrable:  true
+            initiallyDeferred:  true
+            onDelete:  CASCADE
+            referencedColumnNames:  id
+            referencedTableSchemaName:  public
+            referencedTableName:  components
+            validate:  true
+
+  - changeSet:
+        id: createFK_version_component
+        author: Davide Martorana
+        changes:
+            - addForeignKeyConstraint:
+                  baseColumnNames:  component_id
+                  baseTableName:  versions
+                  baseTableSchemaName:  public
+                  constraintName:  fk_version_component
+                  deferrable:  true
+                  initiallyDeferred:  true
+                  onDelete:  CASCADE
+                  referencedColumnNames:  id
+                  referencedTableSchemaName:  public
+                  referencedTableName:  components
+                  validate:  true

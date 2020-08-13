@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: users_activity
+      author: Davide Martorana
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: user_component_visits
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: component_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    referencedTableName: components
+                    referencedColumnNames: id
+                    foreignKeyName: fk_users_component_visit_components
+                    deleteCascade: false
+              - column:
+                  name: date_time
+                  type: datetime
+                  defaultValueComputed: NOW()
+                  constraints:
+                    nullable: false
+
+
+
+
+

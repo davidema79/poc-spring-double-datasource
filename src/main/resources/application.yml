@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+app:
+  database:
+    postgres:
+      host: localhost
+      port: 32773
+      name: poc
+      schema: public
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://${app.database.postgres.host}:${app.database.postgres.port}/${app.database.postgres.name}?currentSchema=${app.database.postgres.schema}
+
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    name: ${app.database.postgres.name}
+    username: ${PG_USER}
+    password: ${PG_PWD}
+    url: ${app.database.postgres.url}
+    platform: postgres
+    continue-on-error: false
+
+
+  liquibase:
+    enabled: true
+    user: ${PG_USER}
+    password: ${PG_PWD}
+    url: ${app.database.postgres.url}
+    change-log: classpath:db/master.yml

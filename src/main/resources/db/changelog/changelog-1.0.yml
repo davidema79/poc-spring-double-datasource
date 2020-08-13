@@ -1,0 +1,82 @@
+databaseChangeLog:
+  - changeSet:
+      id: createBase
+      author: Davide Martorana
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: components
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+
+        - createTable:
+            tableName: contributors
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: component_id
+                  type: int
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: versions
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: version
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: component_id
+                  type: int
+                  constraints:
+                    nullable: false
+
+
+
+
+
+
