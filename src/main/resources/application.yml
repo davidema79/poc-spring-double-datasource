@@ -4,23 +4,30 @@ server:
     context-path: /api
 
 app:
-  database:
-    postgres:
+  datasources:
+    first:
       host: localhost
       port: 32773
       name: poc
       schema: public
       driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://${app.database.postgres.host}:${app.database.postgres.port}/${app.database.postgres.name}?currentSchema=${app.database.postgres.schema}
+      url: jdbc:postgresql://${app.datasources.first.host}:${app.datasources.first.port}/${app.datasources.first.name}?currentSchema=${app.datasources.first.schema}
+    second:
+      host: localhost
+      port: 3306
+      name: poc
+      schema: public
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:postgresql://${app.datasources.second.host}:${app.datasources.second.port}/${app.datasources.first.name}?currentSchema=${app.datasources.second.schema}
 
 
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    name: ${app.database.postgres.name}
+    name: ${app.datasources.first.name}
     username: ${PG_USER}
     password: ${PG_PWD}
-    url: ${app.database.postgres.url}
+    url: ${app.datasources.first.url}
     platform: postgres
     continue-on-error: false
 
@@ -29,5 +36,5 @@ spring:
     enabled: true
     user: ${PG_USER}
     password: ${PG_PWD}
-    url: ${app.database.postgres.url}
+    url: ${app.datasource.first.url}
     change-log: classpath:db/master.yml
