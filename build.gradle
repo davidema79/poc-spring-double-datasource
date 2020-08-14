@@ -22,6 +22,7 @@ ext {
     set('springCloudVersion', "Hoxton.SR6")
 }
 
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
@@ -38,6 +39,9 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+
+    testImplementation "org.testcontainers:junit-jupiter:${testContainersVersion}"
+    testCompile "org.testcontainers:postgresql:${testContainersVersion}"
 }
 
 dependencyManagement {
@@ -47,5 +51,7 @@ dependencyManagement {
 }
 
 test {
+    systemProperty "PG_USER", findProperty("pg_user")
+    systemProperty "PG_PWD", findProperty("pg_pwd")
     useJUnitPlatform()
 }
