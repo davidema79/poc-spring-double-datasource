@@ -14,9 +14,8 @@ steps:
     args: ["build"]
     waitFor: ["Run Tests"]
 
-#  - id: 'Deploy Help container PostgreSQL' # This step must run the last one because otherwise it would block the execution of the others
-#    name: postgres:12
-#    env:
-#      - "POSTGRES_HOST_AUTH_METHOD=trust"
-#    waitFor: ['-'] #start immediately
+  - id: 'Deploy on AppEng'
+    name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy']
+    timeout: '1600s
 
