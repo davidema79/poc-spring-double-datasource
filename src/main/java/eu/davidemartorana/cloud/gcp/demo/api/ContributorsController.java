@@ -18,7 +18,7 @@ public class ContributorsController {
     private ContributorsRepository contributorsRepository;
 
     @GetMapping(path = {"/", ""})
-    public List<Contributor> getContributors(@RequestParam("componentId") final Long componentId) {
+    public List<Contributor> getContributors(@RequestParam(value = "componentId", required = false) final Long componentId) {
         if(componentId == null) {
             return IterableUtils.toList(this.contributorsRepository.findAll());
         }

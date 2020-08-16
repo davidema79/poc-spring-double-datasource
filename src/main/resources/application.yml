@@ -6,6 +6,9 @@ server:
 app:
   datasources:
     first:
+      credentials:
+        username: ${PG_USER}
+        password: ${PG_PWD}
       host: localhost
       port: 5432
       name: poc
@@ -13,6 +16,9 @@ app:
       driver-class-name: org.postgresql.Driver
       url: jdbc:postgresql://${app.datasources.first.host}:${app.datasources.first.port}/${app.datasources.first.name}?currentSchema=${app.datasources.first.schema}
     second:
+      credentials:
+        username: ${MYSQL_USER}
+        password: ${MYSQL_PWD}
       host: localhost
       port: 3306
       name: poc
@@ -23,12 +29,20 @@ app:
 
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: ${app.datasources.first.driver-class-name}
     name: ${app.datasources.first.name}
-    username: ${PG_USER}
-    password: ${PG_PWD}
+    username: ${app.datasources.first.credentials.username}
+    password: ${app.datasources.first.credentials.password}
     url: ${app.datasources.first.url}
     platform: postgres
+    continue-on-error: false
+  second-datasource:
+    driver-class-name: ${app.datasources.second.driver-class-name}
+    name: ${app.datasources.second.name}
+    username: ${app.datasources.second.credentials.username}
+    password: ${app.datasources.second.credentials.password}
+    url: ${app.datasources.second.url}
+    platform: mysql
     continue-on-error: false
 
 
