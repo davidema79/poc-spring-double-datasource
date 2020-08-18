@@ -21,5 +21,4 @@ target/
 
 # Gradle directory to be ignored
 build/
-gradle/
 .gradle/
