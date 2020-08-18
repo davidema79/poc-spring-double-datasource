@@ -55,5 +55,7 @@ dependencyManagement {
 test {
     systemProperty "PG_USER", findProperty("pg_user")
     systemProperty "PG_PWD", findProperty("pg_pwd")
+    systemProperty "MYSQL_USER", findProperty("mysql_user")
+    systemProperty "MYSQL_PWD", findProperty("mysql_pwd")
     useJUnitPlatform()
 }

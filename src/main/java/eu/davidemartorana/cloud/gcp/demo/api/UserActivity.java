@@ -1,7 +1,7 @@
 package eu.davidemartorana.cloud.gcp.demo.api;
 
-import eu.davidemartorana.cloud.gcp.demo.jpa.entities.UserComponentVisit;
-import eu.davidemartorana.cloud.gcp.demo.jpa.repos.UserComponentVisitRepo;
+import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.entities.UserComponentVisit;
+import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.repos.UserComponentVisitRepo;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

@@ -23,8 +23,8 @@ app:
       port: 3306
       name: poc
       schema: public
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:postgresql://${app.datasources.second.host}:${app.datasources.second.port}/${app.datasources.first.name}?currentSchema=${app.datasources.second.schema}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://${app.datasources.second.host}:${app.datasources.second.port}/${app.datasources.first.name}?currentSchema=${app.datasources.second.schema}
 
 
 spring:
@@ -33,15 +33,16 @@ spring:
     name: ${app.datasources.first.name}
     username: ${app.datasources.first.credentials.username}
     password: ${app.datasources.first.credentials.password}
-    url: ${app.datasources.first.url}
+    jdbc-url: ${app.datasources.first.url}     # <------ Crucial to use 'jdbc-url' instead of 'url'
     platform: postgres
     continue-on-error: false
-  second-datasource:
+
+  warehouse-datasource:
     driver-class-name: ${app.datasources.second.driver-class-name}
     name: ${app.datasources.second.name}
     username: ${app.datasources.second.credentials.username}
     password: ${app.datasources.second.credentials.password}
-    url: ${app.datasources.second.url}
+    jdbc-url: ${app.datasources.second.url}    # <------ Crucial to use 'jdbc-url' instead of 'url'
     platform: mysql
     continue-on-error: false
 

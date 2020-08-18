@@ -1,12 +1,15 @@
-package eu.davidemartorana.cloud.gcp.demo.jpa.entities;
+package eu.davidemartorana.cloud.gcp.demo.jpa.relational.entities;
 
 import lombok.Data;
+import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
-@Entity(name = "Contributor" )
-@Table(name = "contributors" )
+@Table("contributors" )
 public class Contributor {
 
   @Id

@@ -1,6 +1,6 @@
-package eu.davidemartorana.cloud.gcp.demo.jpa.repos;
+package eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.repos;
 
-import eu.davidemartorana.cloud.gcp.demo.jpa.entities.UserComponentVisit;
+import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.entities.UserComponentVisit;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;

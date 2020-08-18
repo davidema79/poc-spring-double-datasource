@@ -1,9 +1,8 @@
 package eu.davidemartorana.cloud.gcp.demo.api;
 
 import eu.davidemartorana.cloud.gcp.demo.exceptions.NotFoundException;
-import eu.davidemartorana.cloud.gcp.demo.jpa.entities.Version;
-import eu.davidemartorana.cloud.gcp.demo.jpa.entities.Version;
-import eu.davidemartorana.cloud.gcp.demo.jpa.repos.VersionsRepository;
+import eu.davidemartorana.cloud.gcp.demo.jpa.relational.entities.Version;
+import eu.davidemartorana.cloud.gcp.demo.jpa.relational.repos.VersionsRepository;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

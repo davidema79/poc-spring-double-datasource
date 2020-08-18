@@ -1,11 +1,9 @@
-package eu.davidemartorana.cloud.gcp.demo.jpa.repos;
+package eu.davidemartorana.cloud.gcp.demo.jpa.relational.repos;
 
-import eu.davidemartorana.cloud.gcp.demo.jpa.entities.Contributor;
-import eu.davidemartorana.cloud.gcp.demo.jpa.entities.Version;
+import eu.davidemartorana.cloud.gcp.demo.jpa.relational.entities.Contributor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ContributorsRepository extends PagingAndSortingRepository<Contributor, Long> {
 
