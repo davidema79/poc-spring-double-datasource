@@ -32,6 +32,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Others
 server-ca.pem
 certs/client-cert.pem
 certs/client-key.pem
