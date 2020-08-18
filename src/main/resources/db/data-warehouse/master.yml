@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: 'db/data-warehouse/changelog/changelog-1.0.yml'
+  - include:
+      file: 'db/data-warehouse/data/data-1.0.sql'
+
+
