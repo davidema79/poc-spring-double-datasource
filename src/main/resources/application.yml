@@ -36,6 +36,9 @@ spring:
     jdbc-url: ${app.datasources.first.url}     # <------ Crucial to use 'jdbc-url' instead of 'url'
     platform: postgres
     continue-on-error: false
+    liquibase:
+      enabled: true
+      change-log: classpath:db/master.yml
 
   warehouse-datasource:
     driver-class-name: ${app.datasources.second.driver-class-name}
@@ -45,11 +48,14 @@ spring:
     jdbc-url: ${app.datasources.second.url}    # <------ Crucial to use 'jdbc-url' instead of 'url'
     platform: mysql
     continue-on-error: false
+    liquibase:
+      enabled: true
+      change-log: classpath:db/data-warehouse/master.yml
 
 
-  liquibase:
-    enabled: true
-    user: ${PG_USER}
-    password: ${PG_PWD}
-    url: ${app.datasources.first.url}
-    change-log: classpath:db/master.yml
+#  liquibase:
+#    enabled: true
+#    user: ${PG_USER}
+#    password: ${PG_PWD}
+#    url: ${app.datasources.first.url}
+#    change-log: classpath:db/master.yml
