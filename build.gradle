@@ -44,6 +44,7 @@ dependencies {
 
     testImplementation "org.testcontainers:junit-jupiter:${testContainersVersion}"
     testCompile "org.testcontainers:postgresql:${testContainersVersion}"
+    testCompile "org.testcontainers:mysql:${testContainersVersion}"
 }
 
 dependencyManagement {

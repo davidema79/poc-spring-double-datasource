@@ -1,7 +1,7 @@
 package eu.davidemartorana.cloud.gcp.demo.api;
 
 import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.entities.UserComponentVisit;
-import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.repos.UserComponentVisitRepo;
+import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.repos.UserComponentVisitRepository;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class UserActivity {
 
     @Autowired
-    private UserComponentVisitRepo userComponentVisitRepo;
+    private UserComponentVisitRepository userComponentVisitRepo;
 
     @GetMapping(path = {"/",""})
     public List<ImmutablePair> getUsers(){

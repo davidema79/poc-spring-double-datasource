@@ -2,13 +2,15 @@ package eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.entities;
 
 
 import lombok.Data;
-import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
-@Table("user_component_visits")
+@Entity(name = "UserComponentVisit")
+@Table(name = "user_component_visits")
 public class UserComponentVisit {
 
     @Id
