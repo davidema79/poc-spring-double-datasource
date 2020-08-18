@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      - id: migrationDeleteTables
+        author: Davide Martorana
+        changes:
+          - dropTable:
+              cascadeConstraints:  true
+              schemaName:  public
+              tableName:  user_component_visits

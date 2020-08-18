@@ -21,12 +21,6 @@ databaseChangeLog:
               - column:
                   name: component_id
                   type: int
-                  constraints:
-                    nullable: false
-                    referencedTableName: components
-                    referencedColumnNames: id
-                    foreignKeyName: fk_users_component_visit_components
-                    deleteCascade: false
               - column:
                   name: date_time
                   type: datetime

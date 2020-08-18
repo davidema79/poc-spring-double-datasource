@@ -18,6 +18,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 
+@Import(RelationalLiquibaseConfig.class)
 @EnableTransactionManagement
 @EnableJpaRepositories(
         entityManagerFactoryRef = "relationalEntityManagerFactory",

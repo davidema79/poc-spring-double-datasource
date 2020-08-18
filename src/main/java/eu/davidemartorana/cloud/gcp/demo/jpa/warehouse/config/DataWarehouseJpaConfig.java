@@ -1,7 +1,7 @@
 package eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.config;
 
 import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.entities.UserComponentVisit;
-import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.repos.UserComponentVisitRepo;
+import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.repos.UserComponentVisitRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -16,11 +16,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+@Import(DataWarehouseLiquibaseConfig.class)
 @EnableTransactionManagement
 @EnableJpaRepositories(
         entityManagerFactoryRef = "warehouseEntityManagerFactory",
         transactionManagerRef = "warehouseTransactionManager",
-        basePackageClasses = UserComponentVisitRepo.class
+        basePackageClasses = UserComponentVisitRepository.class
 )
 public class DataWarehouseJpaConfig {
 
