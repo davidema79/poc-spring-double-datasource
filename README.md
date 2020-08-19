@@ -22,3 +22,14 @@ Command:
    $ cloud-build-local --config=cloudBuild.yaml --dryrun=false --push=false ./
 ``` 
 
+#### Triggers Configuration
+In this version, variables in the Cloud Build Trigger are expected to be defined so that the file `cloudBuild.yaml` can inject those into the environment context where GAE will run our application.
+
+In particular, they are:
+```shell script
+_INSTANCE01_USR : <username of the Cloud SQL instance 1>
+_INSTANCE01_PWD : <password of the Cloud SQL instance 1>
+_INSTANCE02_USR : <username of the Cloud SQL instance 2>
+_INSTANCE02_PWD : <password of the Cloud SQL instance 2>
+```
+These variables are used in `cloudBuild.yml` and then in `application-cloud.yml` which will finally inject them into the Application Context.

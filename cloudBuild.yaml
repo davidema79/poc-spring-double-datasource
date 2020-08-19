@@ -19,3 +19,8 @@ steps:
     args: ['app', 'deploy']
     timeout: '1600s'
     waitFor: ["Build Jar"]
+    env:
+      - "INSTANCE01_USR=${_INSTANCE01_USR}"
+      - "INSTANCE01_PWD=${_INSTANCE01_PWD}"
+      - "INSTANCE02_USR=${_INSTANCE02_USR}"
+      - "INSTANCE02_PWD=${_INSTANCE02_PWD}"
