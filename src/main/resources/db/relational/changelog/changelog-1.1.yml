@@ -1,4 +1,5 @@
 databaseChangeLog:
+  - logicalFilePath: 'db/changelog/changelog-1.1.yml'
   - changeSet:
       id: createFK_contributor_component
       author: Davide Martorana

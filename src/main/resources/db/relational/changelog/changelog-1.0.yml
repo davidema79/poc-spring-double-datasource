@@ -1,4 +1,5 @@
 databaseChangeLog:
+  - logicalFilePath: 'db/changelog/changelog-1.0.yml'
   - changeSet:
       id: createBase
       author: Davide Martorana
