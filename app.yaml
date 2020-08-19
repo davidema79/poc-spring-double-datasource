@@ -1,9 +1,14 @@
+service: poc-spring-double-datasource-on-gcp
 runtime: java11
+api_version: 1
 env: standard
-service: default
 
 env_variables:
   SPRING_PROFILES_ACTIVE: "cloud"
+  INSTANCE01_USR: ${INSTANCE01_USR}
+  INSTANCE01_PWD: ${INSTANCE01_PWD}
+  INSTANCE02_USR: ${INSTANCE02_USR}
+  INSTANCE02_PWD: ${INSTANCE02_PWD}
 
 manual_scaling:
   instances: 1
