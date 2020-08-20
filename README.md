@@ -22,14 +22,16 @@ Command:
    $ cloud-build-local --config=cloudBuild.yaml --dryrun=false --push=false ./
 ``` 
 
-#### Triggers Configuration
-In this version, variables in the Cloud Build Trigger are expected to be defined so that the file `cloudBuild.yaml` can inject those into the environment context where GAE will run our application.
+## Step 1 - Connecting to Cloud SQL from Local
+In order to verify the connection has been configured correctly and Liquibase works fine on Cloud SQL, we first try to connect to GCP Instances from our local machine.
 
-In particular, they are:
+That is possible only if: 
+1. Both Cloud SQL instances have a cloud IPv4
+2. In the `Connectivity` section inside the `Connections` tab of both the SQL instances the **public** IPv4 of the local machine has been added (i.e. 86.176.123.123/32) below the *Authorised networks* inside the section **Public IP**. 
+
 ```shell script
-_INSTANCE01_USR : <username of the Cloud SQL instance 1>
-_INSTANCE01_PWD : <password of the Cloud SQL instance 1>
-_INSTANCE02_USR : <username of the Cloud SQL instance 2>
-_INSTANCE02_PWD : <password of the Cloud SQL instance 2>
+  $ ./gradlew clean build
+  $ java -Dspring.profiles.active=cloud -DINSTANCE01_USR=<username_user_1> -DINSTANCE01_PWD=<pwd_user_1> -DINSTANCE02_USR=<username_user_2> -DINSTANCE02_PWD=<username_user_2> -jar build/libs/poc-spring-double-datasource-1.0.0-SNAPSHOT.jar
 ```
-These variables are used in `cloudBuild.yml` and then in `application-cloud.yml` which will finally inject them into the Application Context.
+
+

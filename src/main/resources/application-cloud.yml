@@ -1,13 +1,13 @@
 app:
   datasources:
     first:
-      host: 10.88.160.3
+      host: 35.242.135.116
       port: 5432
       credentials:
         username: ${INSTANCE01_USR}
         password: ${INSTANCE01_PWD}
     second:
-      host: 10.88.161.3
+      host: 35.195.20.21
       port: 3306
       credentials:
         username: ${INSTANCE02_USR}
