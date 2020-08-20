@@ -12,3 +12,14 @@ app:
       credentials:
         username: ${INSTANCE02_USR}
         password: ${INSTANCE02_PWD}
+
+spring:
+  datasource:
+    data-source-properties:
+      socketFactory: com.google.cloud.sql.postgres.SocketFactory
+      cloudSqlInstance: ${INSTANCE01_NAME}
+
+  warehouse-datasource:
+    data-source-properties:
+      socketFactory: com.google.cloud.sql.mysql.SocketFactory
+      cloudSqlInstance: ${INSTANCE02_NAME}

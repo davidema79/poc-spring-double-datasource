@@ -22,7 +22,6 @@ ext {
     set('springCloudVersion', "Hoxton.SR6")
 }
 
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
@@ -31,11 +30,16 @@ dependencies {
     implementation 'org.liquibase:liquibase-core'
 
     implementation 'org.apache.commons:commons-lang3'
-    implementation 'org.apache.commons:commons-collections4:4.4'
+    implementation "org.apache.commons:commons-collections4:${apacheCollectionsVersion}"
 
     compileOnly 'org.projectlombok:lombok'
+
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.postgresql:postgresql'
+    implementation "com.google.cloud.sql:mysql-socket-factory:${gcpCloudSqlSocketVersion}"
+    implementation "com.google.cloud.sql:postgres-socket-factory:${gcpCloudSqlSocketVersion}"
+
+
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 

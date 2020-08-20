@@ -1,5 +1,6 @@
 package eu.davidemartorana.cloud.gcp.demo.jpa.relational.config;
 
+import com.zaxxer.hikari.HikariDataSource;
 import eu.davidemartorana.cloud.gcp.demo.jpa.relational.entities.Component;
 import eu.davidemartorana.cloud.gcp.demo.jpa.relational.repos.ComponentsRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,13 +28,13 @@ import javax.sql.DataSource;
 )
 public class RelationalDBJpaConfig {
 
-
     @Primary
     @Bean(name = "relationalDataSource")
     @ConfigurationProperties(prefix="spring.datasource")
     public DataSource relationalDataSource(){
-        final DataSource ds = DataSourceBuilder
+        final HikariDataSource ds = DataSourceBuilder
                 .create()
+                .type(HikariDataSource.class)
                 .build();
 
         return ds;

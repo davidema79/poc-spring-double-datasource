@@ -1,26 +1,6 @@
 steps:
-  - id: 'Run Tests'
-    name: gradle:6.6-jdk11
-    entrypoint: gradle
-    args: ["test"]
-    env:
-      - 'pg_user=postgres'
-      - 'pg_pwd=1qaz!QAZ'
-    waitFor: ['-']
-
-  - id: 'Build Jar'
-    name: gradle:6.6-jdk11
-    entrypoint: gradle
-    args: ["build"]
-    waitFor: ["Run Tests"]
-
   - id: 'Deploy on AppEng'
     name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
     timeout: '1600s'
-    waitFor: ["Build Jar"]
-    env:
-      - "INSTANCE01_USR=${_INSTANCE01_USR}"
-      - "INSTANCE01_PWD=${_INSTANCE01_PWD}"
-      - "INSTANCE02_USR=${_INSTANCE02_USR}"
-      - "INSTANCE02_PWD=${_INSTANCE02_PWD}"
+

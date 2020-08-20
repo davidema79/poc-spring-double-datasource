@@ -1,5 +1,6 @@
 package eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.config;
 
+import com.zaxxer.hikari.HikariDataSource;
 import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.entities.UserComponentVisit;
 import eu.davidemartorana.cloud.gcp.demo.jpa.warehouse.repos.UserComponentVisitRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,6 +31,7 @@ public class DataWarehouseJpaConfig {
     public DataSource warehouseDataSource(){
         return DataSourceBuilder
                 .create()
+                .type(HikariDataSource.class)
                 .build();
     }
 
