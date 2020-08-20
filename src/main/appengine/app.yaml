@@ -1,6 +1,9 @@
-service: poc-spring-2-ds-public-ip
+service: poc-spring-2-ds-private-ip
 runtime: java11
 env: standard
+
+vpc_access_connector:
+  name: "projects/deustchebankpocforgcp-01/locations/europe-west1/connectors/mysql-region-connector"
 
 env_variables:
   INSTANCE01_USR: "davide"
