@@ -1,8 +1,14 @@
 app:
   datasources:
     first:
+      credentials:
+        username: ${PG_USER}
+        password: ${PG_PWD}
       host: localhost
       port: 5432
     second:
+      credentials:
+        username: ${MYSQL_USER}
+        password: ${MYSQL_PWD}
       host: localhost
       port: 3306

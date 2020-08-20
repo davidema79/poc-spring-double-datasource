@@ -6,17 +6,11 @@ server:
 app:
   datasources:
     first:
-      credentials:
-        username: ${PG_USER}
-        password: ${PG_PWD}
       name: poc
       schema: public
       driver-class-name: org.postgresql.Driver
       url: jdbc:postgresql://${app.datasources.first.host}:${app.datasources.first.port}/${app.datasources.first.name}?currentSchema=${app.datasources.first.schema}
     second:
-      credentials:
-        username: ${MYSQL_USER}
-        password: ${MYSQL_PWD}
       name: poc
       schema: public
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -48,10 +42,3 @@ spring:
       enabled: true
       change-log: classpath:db/data-warehouse/master.yml
 
-
-#  liquibase:
-#    enabled: true
-#    user: ${PG_USER}
-#    password: ${PG_PWD}
-#    url: ${app.datasources.first.url}
-#    change-log: classpath:db/master.yml
