@@ -1,4 +1,4 @@
-service: poc-spring-2-ds-private-ip-and-sm
+service: poc-spring-2-ds-private-ip
 runtime: java11
 env: standard
 
@@ -6,6 +6,12 @@ vpc_access_connector:
   name: "projects/deustchebankpocforgcp-01/locations/europe-west1/connectors/mysql-region-connector"
 
 env_variables:
+  INSTANCE01_USR: "davide"
+  INSTANCE01_PWD: "d4v1d3%3cr3t"
+  INSTANCE01_NAME: "deustchebankpocforgcp-01:europe-west2:deutsche-poc-davide-m"
+  INSTANCE02_USR: "davide"
+  INSTANCE02_PWD: "d4v1d3%3cr3t"
+  INSTANCE02_NAME: "deustchebankpocforgcp-01:europe-west1:deutsche-poc-davide-mysql"
   SPRING_PROFILES_ACTIVE: "cloud"
 
 manual_scaling:
