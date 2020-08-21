@@ -54,11 +54,11 @@ If you don't need you SQL server being accessed from external consumers, it is q
 Unfortunately it comes with a further burden, in this [guide](https://cloud.google.com/sql/docs/mysql/connect-app-engine-standard#private-ip) you can find all the instructions you need to follow.
 
 Anyhow, let's take a few lines to express with different wording what is explained in more details in the guide mentioned above.<br/>
-In GCP Applications deployed in AppEngine, although belonging in the same project, are not part of the private VPC, therefore they cannot get direct access to any of the services through their Private IP. 
+In GCP Applications deployed in AppEngine, although belonging in the same project, are not part of the private VPC, therefore they cannot get direct access to any of the services through their Private IP. This is explained in more details in [this link](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access). 
 
 In order to make possible the connection between the AppEngine Applications and CloudBuild SQL instances, you also need to create a new resource called ***Serverless VPC Access connector*** in the same VPC network as your Cloud SQL instance.
 
-When the Access connector is in place it is enough to tell your application running in AppEngine to use it. That is achieved by adding a new field in the `app.yaml` file:
+When the Access connector is in place it is enough to tell your application running in AppEngine to use it. That is achieved by adding a new field in the `app.yaml` file like pointed out in this [documentation](https://cloud.google.com/appengine/docs/standard/java11/connecting-vpc):
 ```shell script
 vpc_access_connector:
   name: "projects/[PROJECT_ID]/locations/[REGION_ID]/connectors/[CONNECTOR_NAME]"
@@ -67,5 +67,22 @@ vpc_access_connector:
 Please also note that connecting through a Private IP simplify the application, in facts I was able to remove:
 1. the dependencies for both mysql a postgres *Socket Factory*
 2. the properties added in the configuration files in the previous step. 
+
+### Step 4 - Use the Cloud Secrets Manager in GCP for hiding credentials
+So far the credentials have been saved in the `app.yaml` file which has been saved in the repository along with the other files.
+Obviously that cannot be possible for any of the application that want to be at production level. Many tools and services are provided by GCP to handle your secrets and keys.
+
+The easiest way is to save your credentials in the Secrets Manager. 
+
+This requires just 2 changes in our code:
+1. Add the dependency `org.springframework.cloud:spring-cloud-gcp-starter-secretmanager` 
+1. Refer to those secrets from the `application-cloud.yml` properties file in this way: `${sm:/<SECRET_NAME>}`. 
+At runtime SpringBoot will retrieve that secret for you and inject it into your application.
+
+Further changes are required in the in GCP project. They can be summarised in:
+1. Enable the API for the secrets manager
+1. Update the service account used by AppEngine with the needed roles, like for instance `Secret Manager Secret Accessor`. More roles in [here](  https://cloud.google.com/secret-manager/docs/access-control#roles).
+
+Please read this [guide](https://cloud.google.com/secret-manager/docs/configuring-secret-manager) for further instructions.
 
 
