@@ -36,8 +36,6 @@ dependencies {
 
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.postgresql:postgresql'
-    implementation "com.google.cloud.sql:mysql-socket-factory:${gcpCloudSqlSocketVersion}"
-    implementation "com.google.cloud.sql:postgres-socket-factory:${gcpCloudSqlSocketVersion}"
 
 
     annotationProcessor 'org.projectlombok:lombok'
