@@ -7,7 +7,7 @@ app:
   database:
     postgres:
       host: localhost
-      port: 32773
+      port: 5432
       name: poc
       schema: public
       driver-class-name: org.postgresql.Driver
